@@ -11,7 +11,7 @@ if (!isset($argv[2])) {
 }
 
 $inputFile = $argv[1];
-$percentage = min(100, max(0, (int)$argv[2]));
+$percentage = min(100, max(0, (float)$argv[2]));
 
 $xml = new SimpleXMLElement(file_get_contents($inputFile));
 $metrics = $xml->xpath('//metrics');
@@ -24,12 +24,12 @@ $methods = 0;
 $coveredmethods = 0;
 
 foreach ($metrics as $metric) {
-    $elements += (int)$metric['elements'];
-    $coveredElements += (int)$metric['coveredelements'];
-    $statements += (int)$metric['statements'];
-    $coveredstatements += (int)$metric['coveredstatements'];
-    $methods += (int)$metric['methods'];
-    $coveredmethods += (int)$metric['coveredmethods'];
+    $elements += (float)$metric['elements'];
+    $coveredElements += (float)$metric['coveredelements'];
+    $statements += (float)$metric['statements'];
+    $coveredstatements += (float)$metric['coveredstatements'];
+    $methods += (float)$metric['methods'];
+    $coveredmethods += (float)$metric['coveredmethods'];
 }
 
 $type = "default";
